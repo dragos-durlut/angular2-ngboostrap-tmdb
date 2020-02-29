@@ -11,12 +11,12 @@ export class MovieApiService {
   //private apyKeyQueryParam = `api_key=${this.apiKey}`;
   //https://www.themoviedb.org/documentation/api/discover
   private apiBaseUrl: string = "http://api.themoviedb.org/3/";
-  private discoverMoviesUrl: string = `${this.apiBaseUrl}/discover/movie/`;
+  private discoverMoviesUrl: string = `${this.apiBaseUrl}discover/movie/`;
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public getTheMostPopularMovies(): Observable<any[]> {
-    return this.httpClient.get<any[]>(this.discoverMoviesUrl, { params: { api_key: this.apiKey, certification_country: "US", certification: "R", sort_by: "vote_average.desc" } });
+  public getTheMostPopularMovies(): Observable<MoviePage> {
+    return this.httpClient.get<MoviePage>(this.discoverMoviesUrl, { params: { api_key: this.apiKey, certification_country: "US", certification: "R", sort_by: "vote_average.desc" } });
   }
 }
