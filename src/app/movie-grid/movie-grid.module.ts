@@ -5,6 +5,7 @@ import { MovieGridRoutingModule } from './movie-grid-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieGridComponent } from './movie-grid.component';
 import { MovieCardComponent } from './shared/movie-card/movie-card.component';
+import { MovieApiService } from './services/movie-api.service';
 
 
 
@@ -17,5 +18,7 @@ import { MovieCardComponent } from './shared/movie-card/movie-card.component';
   ]
   ,
   exports: [NgbModule]
+  ,
+  providers: [MovieApiService]
 })
 export class MovieGridModule { }
