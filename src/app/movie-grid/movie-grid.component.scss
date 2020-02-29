@@ -3,6 +3,9 @@
   display: inline-flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: baseline;
+  align-content: space-between;
 
   .movie-card {
     flex: 1 1 auto;
