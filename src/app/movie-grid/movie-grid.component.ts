@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieApiService } from './services/movie-api.service';
 
 @Component({
   selector: 'app-movie-grid',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MovieGridComponent implements OnInit {
 
-  constructor() { }
+  public movies: Movie[] = new Array<Movie>();
+  private moviesPage: MoviePage;
+
+
+  constructor(private movieApiService: MovieApiService) {
+  }
 
   ngOnInit() {
+    this.movieApiService.getTheMostPopularMovies().subscribe(moviesPage => { this.moviesPage = moviesPage; this.movies = moviesPage.results });
   }
 
 }
