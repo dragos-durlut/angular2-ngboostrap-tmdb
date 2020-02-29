@@ -1,5 +1,15 @@
-
+<ngb-pagination [(page)]="moviesPage.page"
+                [pageSize]="20"
+                [collectionSize]="moviesPage.total_results"
+                [maxSize]="5">
+</ngb-pagination>
 <div class="movie-card-container">
   <div app-movie-card [movie]="movie" class="movie-card" *ngFor="let movie of movies">    
   </div>
 </div>
+<ngb-pagination [(page)]="moviesPage.page"
+                [pageSize]="20"
+                [collectionSize]="moviesPage.total_results"
+                [maxSize]="5"
+                >
+</ngb-pagination>

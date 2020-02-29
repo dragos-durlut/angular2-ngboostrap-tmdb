@@ -9,7 +9,7 @@ import { MovieApiService } from './services/movie-api.service';
 export class MovieGridComponent implements OnInit {
 
   public movies: Movie[] = new Array<Movie>();
-  private moviesPage: MoviePage;
+  public moviesPage: MoviePage;
 
 
   constructor(private movieApiService: MovieApiService) {
