@@ -1,0 +1,26 @@
+.main-container {
+  height: 100%;
+  display: grid;
+  grid-template-areas:
+      "head head head"
+      "nav-main main-content main-content"
+      "foot foot foot";
+  grid-template-columns: 10% auto;
+  grid-template-rows: 10% auto 10%;
+
+  .head {
+    grid-area: head;
+  }
+
+  .nav-main {
+    grid-area: nav-main;
+  }
+
+  .foot {
+    grid-area: foot;
+  }
+
+  .main-content {
+    grid-area: main-content;
+  }
+}
