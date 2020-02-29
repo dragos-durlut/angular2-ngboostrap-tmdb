@@ -4,7 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MovieGridRoutingModule } from './movie-grid-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieGridComponent } from './movie-grid.component';
-import { MovieCardComponent } from '../shared/movie-card/movie-card.component';
+import { MovieCardComponent } from './shared/movie-card/movie-card.component';
+
 
 
 @NgModule({
