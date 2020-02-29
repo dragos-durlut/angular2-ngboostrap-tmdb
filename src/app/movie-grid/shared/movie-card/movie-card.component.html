@@ -2,8 +2,9 @@
 <div class="card" style="width: 18rem;">
   <img *ngIf="movie.poster_path" class="card-img-top" [src]="posterImageUrl" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{movie.title}}</h5>
+    <h5 class="card-title">{{movie.title}} <span style="color:red;"><i *ngIf="movie.adult" class="fa fa-ban fa-2x" aria-hidden="true"> </i></span> </h5>
     <p class="card-text">{{movie.overview}}</p>
-    <ngb-rating [rate]="movie.popularity" [readonly]="true" [max]="10" ></ngb-rating>   
+    <ngb-rating [rate]="movie.popularity" [readonly]="true" [max]="10"></ngb-rating>
+    
   </div>
 </div>
