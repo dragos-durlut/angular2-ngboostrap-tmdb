@@ -1,7 +1,10 @@
-.container{
-    display:inline-flex;
-    flex-direction: row;
-    .movie-card{
-        flex:1 1 auto;
-    }
+.movie-card-container {
+  width: 100%;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  .movie-card {
+    flex: 1 1 auto;
+  }
 }
