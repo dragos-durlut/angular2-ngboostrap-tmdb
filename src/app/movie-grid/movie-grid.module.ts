@@ -13,5 +13,7 @@ import { MovieGridComponent } from './movie-grid.component';
     MovieGridRoutingModule,
     NgbModule
   ]
+  ,
+  exports: [NgbModule]
 })
 export class MovieGridModule { }
