@@ -17,6 +17,6 @@ export class MovieApiService {
   }
 
   public getTheMostPopularMovies(): Observable<MoviePage> {
-    return this.httpClient.get<MoviePage>(this.discoverMoviesUrl, { params: { api_key: this.apiKey, certification_country: "US", certification: "R", sort_by: "vote_average.desc" } });
+    return this.httpClient.get<MoviePage>(this.discoverMoviesUrl, { params: { api_key: this.apiKey, certification_country: "US", certification: "R", sort_by: "vote_average.desc", include_adult: "true" } });
   }
 }
