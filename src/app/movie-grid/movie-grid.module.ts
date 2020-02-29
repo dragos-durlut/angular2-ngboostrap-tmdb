@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
+import { HttpClientModule } from '@angular/common/http';
 import { MovieGridRoutingModule } from './movie-grid-routing.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MovieGridComponent } from './movie-grid.component';
@@ -13,6 +13,7 @@ import { MovieApiService } from './services/movie-api.service';
   declarations: [MovieGridComponent, MovieCardComponent],
   imports: [
     CommonModule,
+    HttpClientModule,
     MovieGridRoutingModule,
     NgbModule
   ]
