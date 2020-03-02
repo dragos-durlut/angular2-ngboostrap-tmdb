@@ -26,7 +26,7 @@ export class MovieApiService {
           , certification_country: "US"
           , certification: "R"
           , sort_by: "vote_average.desc"
-          , include_adult: "true"
+          , include_adult: "false"
         }
       });
   }
