@@ -5,6 +5,12 @@
     </div>
     <div class="filter-control">
       <ng5-slider [(value)]="movieRatingMinValue" [(highValue)]="movieRatingMaxValue" [options]="movieRatingSliderOptions" (userChangeEnd)="onMovieRatingSliderUserChangeEnd($event)"></ng5-slider>
+    </div>    
+  </div>
+  <div class="filter">
+    <div class="custom-control custom-checkbox">
+      <input type="checkbox" class="custom-control-input" id="includeAdult" [(ngModel)]="includeAdult" (click)="onIncludeAdultClick($event.target.checked)">
+      <label class="custom-control-label" for="includeAdult">Include Adult <span style="color:red;"><i class="fa fa-ban" aria-hidden="true"> </i></span></label>
     </div>
   </div>
 </div>

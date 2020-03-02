@@ -40,6 +40,14 @@ export class MovieGridComponent implements OnInit {
     ceil: 10
   };
 
+  public includeAdult: boolean = false;
+
+  public onIncludeAdultClick(adult: boolean): void {
+    this.includeAdult = adult;
+    this.getMostPopularMovies();
+  }
+
+
   public movies: Movie[] = new Array<Movie>();
 
   constructor(private movieApiService: MovieApiService, config: NgbPaginationConfig) {
@@ -74,7 +82,7 @@ export class MovieGridComponent implements OnInit {
       , certificationCountry: "US"
       , certification: "R"
       , sortBy: "vote_average.desc"
-      , includeAdult: false
+      , includeAdult: this._includeAdult
       , movieRatingMinValue: this.movieRatingMinValue
       , movieRatingMaxValue: this.movieRatingMaxValue
     };

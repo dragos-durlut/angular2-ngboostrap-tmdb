@@ -8,6 +8,7 @@ import { MovieCardComponent } from './shared/movie-card/movie-card.component';
 import { MovieApiService } from './services/movie-api.service';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { Ng5SliderModule } from 'ng5-slider';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -15,6 +16,7 @@ import { Ng5SliderModule } from 'ng5-slider';
   declarations: [MovieGridComponent, MovieCardComponent, TruncatePipe],
   imports: [
     CommonModule,
+    FormsModule,
     HttpClientModule,
     MovieGridRoutingModule,
     NgbModule,
