@@ -32,6 +32,9 @@ export class MovieGridComponent implements OnInit {
 
   constructor(private movieApiService: MovieApiService, config: NgbPaginationConfig) {
     config.size = 'lg';
+    config.rotate = true
+    config.ellipses = false;
+    config.boundaryLinks = true;
   }
 
   ngOnInit() {
