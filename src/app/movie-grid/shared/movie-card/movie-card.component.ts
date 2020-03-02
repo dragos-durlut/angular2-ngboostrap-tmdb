@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Movie } from '../../interfaces/movie';
 
 @Component({
   selector: '[app-movie-card]',
