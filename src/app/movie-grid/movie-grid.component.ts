@@ -64,8 +64,8 @@ export class MovieGridComponent implements OnInit {
 
 
   public onMovieRatingSliderUserChangeEnd(changeContext: SliderChangeContext): void {
-    console.log(this.movieRatingMinValue, this.movieRatingMaxValue);
-    console.log(changeContext.value, changeContext.highValue);
+    this._currentPage = 1;
+    this.getMostPopularMovies();
   }
 
   private getMovieFilter(): MovieFilter {
