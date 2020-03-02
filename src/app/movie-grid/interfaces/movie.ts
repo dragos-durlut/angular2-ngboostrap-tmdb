@@ -1,4 +1,4 @@
-interface Movie {
+export interface Movie {
   popularity: number;
   id: number;
   video: boolean;

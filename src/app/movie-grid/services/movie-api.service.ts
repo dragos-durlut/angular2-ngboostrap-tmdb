@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { MoviePage } from '../interfaces/movie-page';
 
 @Injectable({
   providedIn: 'root'

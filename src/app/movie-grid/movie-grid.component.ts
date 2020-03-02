@@ -3,6 +3,7 @@ import { MovieApiService } from './services/movie-api.service';
 import { Observable, of, Subject } from 'rxjs';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Options as SliderOptions, ChangeContext as SliderChangeContext } from 'ng5-slider';
+import { Movie } from './interfaces/movie';
 
 @Component({
   selector: 'app-movie-grid',
