@@ -16,7 +16,18 @@ export class MovieApiService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getTheMostPopularMovies(): Observable<MoviePage> {
-    return this.httpClient.get<MoviePage>(this.discoverMoviesUrl, { params: { api_key: this.apiKey, certification_country: "US", certification: "R", sort_by: "vote_average.desc", include_adult: "true" } });
+  public getTheMostPopularMovies(page: number = 1): Observable<MoviePage> {
+    return this.httpClient.get<MoviePage>(this.discoverMoviesUrl,
+      {
+        params:
+        {
+          api_key: this.apiKey
+          , page: page.toString()
+          , certification_country: "US"
+          , certification: "R"
+          , sort_by: "vote_average.desc"
+          , include_adult: "true"
+        }
+      });
   }
 }
