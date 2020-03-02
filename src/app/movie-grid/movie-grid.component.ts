@@ -5,6 +5,7 @@ import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Options as SliderOptions, ChangeContext as SliderChangeContext } from 'ng5-slider';
 import { Movie } from './interfaces/movie';
 import { MovieFilter } from './interfaces/movie-filter';
+import { Certification } from './interfaces/certification';
 
 @Component({
   selector: 'app-movie-grid',
@@ -54,7 +55,7 @@ export class MovieGridComponent implements OnInit {
     this.getMostPopularMovies();
   }
 
-
+  public certifications: Array<Certification> = new Array<Certification>();
 
   public movies: Movie[] = new Array<Movie>();
 
@@ -63,6 +64,8 @@ export class MovieGridComponent implements OnInit {
     config.rotate = true
     config.ellipses = false;
     config.boundaryLinks = true;
+
+    this.certifications = this.movieApiService.getCertifications();
   }
 
   ngOnInit() {
