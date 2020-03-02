@@ -40,9 +40,19 @@ export class MovieApiService {
   public getCertifications(): Array<Certification> {
     let certificationsArray: Array<Certification> = <Array<Certification>>[
       {
+        "certification": "NR",
+        "meaning": "No rating information.",
+        "order": 0
+      },
+      {
         "certification": "G",
         "meaning": "All ages admitted. There is no content that would be objectionable to most parents. This is one of only two ratings dating back to 1968 that still exists today.",
         "order": 1
+      },
+      {
+        "certification": "PG",
+        "meaning": "Some material may not be suitable for children under 10. These films may contain some mild language, crude/suggestive humor, scary moments and/or violence. No drug content is present. There are a few exceptions to this rule. A few racial insults may also be heard.",
+        "order": 2
       },
       {
         "certification": "PG-13",
@@ -58,16 +68,6 @@ export class MovieApiService {
         "certification": "NC-17",
         "meaning": "These films contain excessive graphic violence, intense or explicit sex, depraved, abhorrent behavior, explicit drug abuse, strong language, explicit nudity, or any other elements which, at present, most parents would consider too strong and therefore off-limits for viewing by their children and teens. NC-17 does not necessarily mean obscene or pornographic in the oft-accepted or legal meaning of those words.",
         "order": 5
-      },
-      {
-        "certification": "NR",
-        "meaning": "No rating information.",
-        "order": 0
-      },
-      {
-        "certification": "PG",
-        "meaning": "Some material may not be suitable for children under 10. These films may contain some mild language, crude/suggestive humor, scary moments and/or violence. No drug content is present. There are a few exceptions to this rule. A few racial insults may also be heard.",
-        "order": 2
       }];
     return certificationsArray;
   }
