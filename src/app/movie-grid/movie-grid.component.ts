@@ -82,7 +82,7 @@ export class MovieGridComponent implements OnInit {
       , certificationCountry: "US"
       , certification: "R"
       , sortBy: "vote_average.desc"
-      , includeAdult: this._includeAdult
+      , includeAdult: this.includeAdult
       , movieRatingMinValue: this.movieRatingMinValue
       , movieRatingMaxValue: this.movieRatingMaxValue
     };
