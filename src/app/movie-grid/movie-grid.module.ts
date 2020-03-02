@@ -7,6 +7,7 @@ import { MovieGridComponent } from './movie-grid.component';
 import { MovieCardComponent } from './shared/movie-card/movie-card.component';
 import { MovieApiService } from './services/movie-api.service';
 import { TruncatePipe } from './pipes/truncate.pipe';
+import { Ng5SliderModule } from 'ng5-slider';
 
 
 
@@ -16,7 +17,8 @@ import { TruncatePipe } from './pipes/truncate.pipe';
     CommonModule,
     HttpClientModule,
     MovieGridRoutingModule,
-    NgbModule
+    NgbModule,
+    Ng5SliderModule
   ]
   ,
   exports: [NgbModule]

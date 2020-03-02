@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from './services/movie-api.service';
 import { Observable, of, Subject } from 'rxjs';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { Options as SliderOptions, ChangeContext as SliderChangeContext } from 'ng5-slider';
 
 @Component({
   selector: 'app-movie-grid',
@@ -28,6 +29,15 @@ export class MovieGridComponent implements OnInit {
   public nrOfPagesToDisplay = 10;
   public pageSize = 20;
 
+
+  public movieRatingMinValue: number = 5;
+  public movieRatingMaxValue: number = 10;
+
+  public movieRatingSliderOptions: SliderOptions = {
+    floor: 0,
+    ceil: 10
+  };
+
   public movies: Movie[] = new Array<Movie>();
 
   constructor(private movieApiService: MovieApiService, config: NgbPaginationConfig) {
@@ -50,4 +60,11 @@ export class MovieGridComponent implements OnInit {
     });
   }
 
+
+  public onMovieRatingSliderUserChangeEnd(changeContext: SliderChangeContext): void {
+    console.log(this.movieRatingMinValue, this.movieRatingMaxValue);
+    console.log(changeContext.value, changeContext.highValue);
+  }
+
+  
 }
