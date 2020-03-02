@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { MoviePage } from '../interfaces/movie-page';
+import { MovieFilter } from '../interfaces/movie-filter';
 
 @Injectable({
   providedIn: 'root'
@@ -17,18 +18,21 @@ export class MovieApiService {
   constructor(private httpClient: HttpClient) {
   }
 
-  public getTheMostPopularMovies(page: number = 1): Observable<MoviePage> {
+  public getTheMostPopularMovies(filter: MovieFilter): Observable<MoviePage> {
     return this.httpClient.get<MoviePage>(this.discoverMoviesUrl,
       {
         params:
-        {
-          api_key: this.apiKey
-          , page: page.toString()
-          , certification_country: "US"
-          , certification: "R"
-          , sort_by: "vote_average.desc"
-          , include_adult: "false"
-        }
+          <HttpParams><unknown>
+          {
+            api_key: this.apiKey
+            , page: filter.page
+            , certification_country: filter.certificationCountry
+            , certification: filter.certification
+            , sort_by: filter.sortBy
+            , include_adult: filter.includeAdult
+            , "vote_average.gte": filter.movieRatingMinValue
+            , "vote_average.lte": filter.movieRatingMaxValue
+          }
       });
   }
 }

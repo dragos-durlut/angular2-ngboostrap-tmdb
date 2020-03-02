@@ -4,6 +4,7 @@ import { Observable, of, Subject } from 'rxjs';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Options as SliderOptions, ChangeContext as SliderChangeContext } from 'ng5-slider';
 import { Movie } from './interfaces/movie';
+import { MovieFilter } from './interfaces/movie-filter';
 
 @Component({
   selector: 'app-movie-grid',
@@ -49,11 +50,11 @@ export class MovieGridComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getMostPopularMovies(1);
+    this.getMostPopularMovies();
   }
 
-  private getMostPopularMovies(page: number): void {
-    this.movieApiService.getTheMostPopularMovies(page).subscribe(moviesPage => {
+  private getMostPopularMovies(): void {
+    this.movieApiService.getTheMostPopularMovies(this.getMovieFilter()).subscribe(moviesPage => {
       this.movies = moviesPage.results;
       this._currentPage = moviesPage.page;
       this.totalNumberOfPages = moviesPage.total_pages;
@@ -65,6 +66,19 @@ export class MovieGridComponent implements OnInit {
   public onMovieRatingSliderUserChangeEnd(changeContext: SliderChangeContext): void {
     console.log(this.movieRatingMinValue, this.movieRatingMaxValue);
     console.log(changeContext.value, changeContext.highValue);
+  }
+
+  private getMovieFilter(): MovieFilter {
+    let movieFilter: MovieFilter = <MovieFilter>{
+      page: this.currentPage
+      , certificationCountry: "US"
+      , certification: "R"
+      , sortBy: "vote_average.desc"
+      , includeAdult: false
+      , movieRatingMinValue: this.movieRatingMinValue
+      , movieRatingMaxValue: this.movieRatingMaxValue
+    };
+    return movieFilter;
   }
 
   
