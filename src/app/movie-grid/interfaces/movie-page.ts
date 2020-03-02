@@ -1,3 +1,5 @@
+import { Movie } from './movie';
+
 export interface MoviePage {
   page: number;
   total_results: number;
