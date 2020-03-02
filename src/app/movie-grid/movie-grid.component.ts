@@ -47,6 +47,14 @@ export class MovieGridComponent implements OnInit {
     this.getMostPopularMovies();
   }
 
+  public sortBy: string = "popularity.desc";
+
+  public onSortByChange(sortBy: string): void {
+    this.sortBy = sortBy;
+    this.getMostPopularMovies();
+  }
+
+
 
   public movies: Movie[] = new Array<Movie>();
 
@@ -81,7 +89,7 @@ export class MovieGridComponent implements OnInit {
       page: this.currentPage
       , certificationCountry: "US"
       , certification: "R"
-      , sortBy: "vote_average.desc"
+      , sortBy: this.sortBy
       , includeAdult: this.includeAdult
       , movieRatingMinValue: this.movieRatingMinValue
       , movieRatingMaxValue: this.movieRatingMaxValue

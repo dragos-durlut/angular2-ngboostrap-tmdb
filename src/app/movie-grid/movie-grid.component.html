@@ -13,6 +13,29 @@
       <label class="custom-control-label" for="includeAdult">Include Adult <span style="color:red;"><i class="fa fa-ban" aria-hidden="true"> </i></span></label>
     </div>
   </div>
+  <div class="filter">
+    <div class="filter-label">
+      Sort By
+    </div>
+    <div class="filter-control">
+      <select class="form-control" id="sortBy" (change)="onSortByChange($event.target.value)">
+        <option value="popularity.asc">popularity ASC</option>
+        <option value="popularity.desc" selected>popularity DESC</option>
+        <option value="release_date.asc">release_date ASC</option>
+        <option value="release_date.desc">release_date DESC</option>
+        <option value="revenue.asc">revenue ASC</option>
+        <option value="revenue.desc">revenue DESC</option>
+        <option value="primary_release_date.asc">primary_release_date ASC</option>
+        <option value="primary_release_date.desc">primary_release_date DESC</option>
+        <option value="original_title.asc">original_title ASC</option>
+        <option value="original_title.desc">original_title DESC</option>
+        <option value="vote_average.asc">vote_average ASC</option>
+        <option value="vote_average.desc">vote_average DESC</option>
+        <option value="vote_count.asc">vote_count ASC</option>
+        <option value="vote_count.desc">vote_count DESC</option>
+      </select>
+    </div>
+  </div>
 </div>
 <ngb-pagination [(page)]="currentPage" *ngIf="true"
                 [pageSize]="pageSize"
