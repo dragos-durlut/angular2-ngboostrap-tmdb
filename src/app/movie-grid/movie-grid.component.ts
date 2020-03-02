@@ -25,7 +25,7 @@ export class MovieGridComponent implements OnInit {
   private totalNumberOfPages: number;
 
 
-  public nrOfPagesToDisplay = 5;
+  public nrOfPagesToDisplay = 10;
   public pageSize = 20;
 
   public movies: Movie[] = new Array<Movie>();
