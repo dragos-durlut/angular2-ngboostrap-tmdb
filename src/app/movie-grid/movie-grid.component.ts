@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from './services/movie-api.service';
 import { Observable, of, Subject } from 'rxjs';
 import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Options as SliderOptions, ChangeContext as SliderChangeContext } from 'ng5-slider';
+import { Options as SliderOptions, ChangeContext as SliderChangeContext, CustomStepDefinition } from 'ng5-slider';
 import { Movie } from './interfaces/movie';
 import { MovieFilter } from './interfaces/movie-filter';
 import { Certification } from './interfaces/certification';
@@ -41,6 +41,11 @@ export class MovieGridComponent implements OnInit {
     ceil: 10
   };
 
+  public movieCertificationValue: number= 2;
+
+
+  public movieCertificationsSliderOptions: SliderOptions;
+
   public includeAdult: boolean = false;
 
   public onIncludeAdultClick(adult: boolean): void {
@@ -66,6 +71,12 @@ export class MovieGridComponent implements OnInit {
     config.boundaryLinks = true;
 
     this.certifications = this.movieApiService.getCertifications();
+    this.movieCertificationsSliderOptions = {
+      showTicksValues: false,
+      showTicks: true,
+      stepsArray: this.certifications.map(x => <CustomStepDefinition>{ value: x.order, legend: x.certification })
+
+    };
   }
 
   ngOnInit() {
@@ -87,11 +98,16 @@ export class MovieGridComponent implements OnInit {
     this.getMostPopularMovies();
   }
 
+  public onMovieCertificationSliderUserChangeEnd(changeContext: SliderChangeContext): void {
+    this._currentPage = 1;
+    this.getMostPopularMovies();
+  }
+
   private getMovieFilter(): MovieFilter {
     let movieFilter: MovieFilter = <MovieFilter>{
       page: this.currentPage
       , certificationCountry: "US"
-      , certification: "R"
+      , certification: this.movieApiService.getCertifications().find(x => x.order == this.movieCertificationValue).certification// "R"
       , sortBy: this.sortBy
       , includeAdult: this.includeAdult
       , movieRatingMinValue: this.movieRatingMinValue

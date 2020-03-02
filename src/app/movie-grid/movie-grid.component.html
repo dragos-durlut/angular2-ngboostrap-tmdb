@@ -5,7 +5,15 @@
     </div>
     <div class="filter-control">
       <ng5-slider [(value)]="movieRatingMinValue" [(highValue)]="movieRatingMaxValue" [options]="movieRatingSliderOptions" (userChangeEnd)="onMovieRatingSliderUserChangeEnd($event)"></ng5-slider>
-    </div>    
+    </div>
+  </div>
+  <div class="filter">
+    <div class="filter-label">
+      Certification
+    </div>
+    <div class="filter-control">
+      <ng5-slider [(value)]="movieCertificationValue" [options]="movieCertificationsSliderOptions" (userChangeEnd)="onMovieCertificationSliderUserChangeEnd($event)"></ng5-slider>
+    </div>
   </div>
   <div class="filter">
     <div class="custom-control custom-checkbox">
