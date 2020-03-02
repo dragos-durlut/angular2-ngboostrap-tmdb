@@ -21,7 +21,7 @@ export class MovieGridComponent implements OnInit {
   }
   public set currentPage(page: number) {
     this._currentPage = page;
-    this.getMostPopularMovies(page);
+    this.getMostPopularMovies();
   }
 
   public totalNumberOfResults: number;
