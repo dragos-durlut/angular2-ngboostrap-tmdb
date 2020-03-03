@@ -51,7 +51,7 @@
                 [maxSize]="nrOfPagesToDisplay">
 </ngb-pagination>
 <div class="movie-card-container">
-  <div app-movie-card [movie]="movie" class="movie-card" *ngFor="let movie of movies">    
+  <div app-movie-card [movie]="movie" class="movie-card" *ngFor="let movie of movies" (click)="openMovieDetailsModal(movie, movieDetailsContent)">    
   </div>
 </div>
 <ngb-pagination [(page)]="currentPage" *ngIf="true"
@@ -60,3 +60,32 @@
                 [maxSize]="nrOfPagesToDisplay"
                 >
 </ngb-pagination>
+
+
+<ng-template #movieDetailsContent let-modal>
+  <ng-container *ngIf="selectedMovie">
+    <div class="modal-header">
+      <h4 class="modal-title">
+        {{selectedMovie.title}} &nbsp; &nbsp; {{selectedMovie.vote_average}}<span style="cursor: default;">★</span>/10
+      </h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <blockquote class="blockquote">
+          <p class="mb-0">  {{selectedMovie.overview}}</p>
+      </blockquote>      
+      <p>
+        <b>Release Date: </b> {{selectedMovie.release_date}}
+      </p>
+      <p>
+        <img *ngIf="selectedMovie.backdrop_path" class="card-img-top" [src]="'https://image.tmdb.org/t/p/original/'+selectedMovie.backdrop_path" alt="Card image cap">
+      </p>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+  </ng-container>
+</ng-template>

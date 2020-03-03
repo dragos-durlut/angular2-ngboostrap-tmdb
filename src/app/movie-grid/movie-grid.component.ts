@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieApiService } from './services/movie-api.service';
 import { Observable, of, Subject } from 'rxjs';
-import { NgbPaginationConfig } from '@ng-bootstrap/ng-bootstrap';
+import { NgbPaginationConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Options as SliderOptions, ChangeContext as SliderChangeContext, CustomStepDefinition } from 'ng5-slider';
 import { Movie } from './interfaces/movie';
 import { MovieFilter } from './interfaces/movie-filter';
@@ -64,7 +64,9 @@ export class MovieGridComponent implements OnInit {
 
   public movies: Movie[] = new Array<Movie>();
 
-  constructor(private movieApiService: MovieApiService, config: NgbPaginationConfig) {
+  public selectedMovie: Movie = null;
+
+  constructor(private movieApiService: MovieApiService, config: NgbPaginationConfig, private modalService: NgbModal) {
     config.size = 'sm';
     config.rotate = true
     config.ellipses = false;
@@ -114,6 +116,11 @@ export class MovieGridComponent implements OnInit {
       , movieRatingMaxValue: this.movieRatingMaxValue
     };
     return movieFilter;
+  }
+
+  public openMovieDetailsModal(movieDetails: Movie, modalTemplate: any) {
+    this.selectedMovie = movieDetails;
+    this.modalService.open(modalTemplate, { backdropClass: 'light-blue-backdrop',size: 'xl' });
   }
 
   
