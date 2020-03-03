@@ -26,6 +26,7 @@ steps:
     azureSubscription: 'Pay-As-You-Go(c32963e3-0501-4cc6-8cc0-efc180f166d6)'
     appType: 'webAppLinux'
     WebAppName: 'github-angular-tmdb'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    #packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    packageForLinux: '$(Build.ArtifactStagingDirectory)/*.zip'
     RuntimeStack: 'NODE|12-lts'
     StartupCommand: 'npm start'
