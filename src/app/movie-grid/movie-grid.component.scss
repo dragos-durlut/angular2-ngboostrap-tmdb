@@ -14,7 +14,7 @@
 
 .movie-filter-container {
   width: 100%;
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -23,21 +23,31 @@
   padding: 0.5em 0.5em 2em 0.5em;
 
   .filter {
-    flex: 1 1 auto;
-    display: inline-flex;
+    flex: auto;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     align-content: space-between;
-
+    padding: 2em 2em 2em 2em;
+    min-width: 400px;
 
     .filter-label {
-      flex: 1 1 auto;
+      flex: 1 1 2em;
+      padding-left: 0em;
+      padding-right: 7em;
+      min-width: 100px;
     }
 
     .filter-control {
-        flex: 10 10 auto;
+      flex-basis: 20em;
+      flex-grow: 10;
+      flex-shrink: 0;
+
+      &.slider-control{
+          min-width:300px;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
     <div class="filter-label">
       Rating
     </div>
-    <div class="filter-control">
+    <div class="filter-control slider-control">
       <ng5-slider [(value)]="movieRatingMinValue" [(highValue)]="movieRatingMaxValue" [options]="movieRatingSliderOptions" (userChangeEnd)="onMovieRatingSliderUserChangeEnd($event)"></ng5-slider>
     </div>
   </div>
@@ -11,7 +11,7 @@
     <div class="filter-label">
       Certification
     </div>
-    <div class="filter-control">
+    <div class="filter-control slider-control">
       <ng5-slider [(value)]="movieCertificationValue" [options]="movieCertificationsSliderOptions" (userChangeEnd)="onMovieCertificationSliderUserChangeEnd($event)"></ng5-slider>
     </div>
   </div>
