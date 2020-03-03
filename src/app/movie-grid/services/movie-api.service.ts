@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { MoviePage } from '../interfaces/movie-page';
 import { MovieFilter } from '../interfaces/movie-filter';
 import { Certification } from '../interfaces/certification';
@@ -10,31 +10,35 @@ import { Certification } from '../interfaces/certification';
 })
 export class MovieApiService {
 
-  private apiKey: string = "7034fa57ce124b066dcec90cf987d846";
+  private v3apiKey: string = "7034fa57ce124b066dcec90cf987d846";
+  private v4apiAccessToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3MDM0ZmE1N2NlMTI0YjA2NmRjZWM5MGNmOTg3ZDg0NiIsInN1YiI6IjVkMGE2NmI1YzNhMzY4NzE4NjIxOGM2MCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.uEUx4NxhoPFckp2oc-z_xAmSec2jrm8VRrM8uV4_fi8";
   //private apyKeyQueryParam = `api_key=${this.apiKey}`;
   //https://www.themoviedb.org/documentation/api/discover
-  private apiBaseUrl: string = "http://api.themoviedb.org/3/";
+  private apiBaseUrl: string = "https://api.themoviedb.org/3/";
   private discoverMoviesUrl: string = `${this.apiBaseUrl}discover/movie/`;
+  private headers = new HttpHeaders({ 'Content-Type': 'application/json; charset=utf-8' });
 
   constructor(private httpClient: HttpClient) {
   }
 
-  public getTheMostPopularMovies(filter: MovieFilter): Observable<MoviePage> {
-    return this.httpClient.get<MoviePage>(this.discoverMoviesUrl,
+  private getHttpParamsFilter(filter: MovieFilter): HttpParams {
+    return <HttpParams><unknown>
       {
-        params:
-          <HttpParams><unknown>
-          {
-            api_key: this.apiKey
-            , page: filter.page
-            , certification_country: filter.certificationCountry
-            , certification: filter.certification
-            , sort_by: filter.sortBy
-            , include_adult: filter.includeAdult
-            , "vote_average.gte": filter.movieRatingMinValue
-            , "vote_average.lte": filter.movieRatingMaxValue
-          }
-      });
+        api_key: this.v3apiKey
+        , page: filter.page
+        , certification_country: filter.certificationCountry
+        , certification: filter.certification
+        , sort_by: filter.sortBy
+        , include_adult: filter.includeAdult
+        , "vote_average.gte": filter.movieRatingMinValue
+        , "vote_average.lte": filter.movieRatingMaxValue
+      };
+  }
+
+  public getTheMostPopularMovies(filter: MovieFilter): Observable<MoviePage> {
+    
+    let httpParams = this.getHttpParamsFilter(filter);    
+    return this.httpClient.get<MoviePage>(this.discoverMoviesUrl, { headers: this.headers, params: httpParams });    
   }
 
   public getCertifications(): Array<Certification> {
