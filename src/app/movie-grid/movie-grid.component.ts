@@ -123,5 +123,9 @@ export class MovieGridComponent implements OnInit {
     this.modalService.open(modalTemplate, { backdropClass: 'light-blue-backdrop',size: 'xl' });
   }
 
+  public getGenresNameList(ids: Array<number>): Array<string> {
+    return this.movieApiService.getGenres().filter(g => { return ids.includes(g.id) }).map(g => g.name);
+  }
+
   
 }

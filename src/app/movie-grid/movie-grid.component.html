@@ -74,10 +74,13 @@
     </div>
     <div class="modal-body">
       <blockquote class="blockquote">
-          <p class="mb-0">  {{selectedMovie.overview}}</p>
-      </blockquote>      
+        <p class="mb-0">  {{selectedMovie.overview}}</p>
+      </blockquote>
       <p>
         <b>Release Date: </b> {{selectedMovie.release_date}}
+      </p>
+      <p>
+        <b>Genre(s): </b> {{getGenresNameList(selectedMovie.genre_ids).join(', ')}}
       </p>
       <p>
         <img *ngIf="selectedMovie.backdrop_path" class="card-img-top" [src]="'https://image.tmdb.org/t/p/original/'+selectedMovie.backdrop_path" alt="Card image cap">
