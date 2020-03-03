@@ -20,3 +20,12 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Pay-As-You-Go(c32963e3-0501-4cc6-8cc0-efc180f166d6)'
+    appType: 'webAppLinux'
+    WebAppName: 'github-angular-tmdb'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    RuntimeStack: 'NODE|12-lts'
+    StartupCommand: 'npm start'
