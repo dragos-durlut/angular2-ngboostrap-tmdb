@@ -29,7 +29,7 @@ export class MovieGridComponent implements OnInit {
   private totalNumberOfPages: number;
 
 
-  public nrOfPagesToDisplay = 10;
+  public nrOfPagesToDisplay = 5;
   public pageSize = 20;
 
 
@@ -65,7 +65,7 @@ export class MovieGridComponent implements OnInit {
   public movies: Movie[] = new Array<Movie>();
 
   constructor(private movieApiService: MovieApiService, config: NgbPaginationConfig) {
-    config.size = 'lg';
+    config.size = 'sm';
     config.rotate = true
     config.ellipses = false;
     config.boundaryLinks = true;
